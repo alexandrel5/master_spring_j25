@@ -1,8 +1,7 @@
-package com.eazybytes.ext.config;
+package com.eazybytes.ext2.config;
 
-import com.eazybytes.ext.beans.Vehicle;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.eazybytes.ext2.beans.Vehicle;
+import org.springframework.context.annotation.*;
 
 /*
 Spring @Configuration annotation is part of the Spring core framework.
@@ -12,27 +11,30 @@ to be used in the applications.
  */
 
 @Configuration
+@Import({AnotherProjectConfig.class})
 public class ProjectConfig {
 
     /*
     @Bean annotation, which lets Spring know that it needs to call this method when it
     initializes its context and adds the returned value to the context
      */
-    @Bean
+    @Bean(name = "audiVehicle")
     Vehicle vehicle1(){
         var veh = new Vehicle();
         veh.setName("Audi");
         return veh;
     }
 
-    @Bean
+    @Primary
+    @Bean(value = "hondaVehicle")
     Vehicle vehicle2(){
         var veh = new Vehicle();
         veh.setName("Honda");
         return veh;
     }
 
-    @Bean
+    @Bean({"ferrariVehicle", "myFavouriteVehicle"})
+    @Description("this is a Vehicle class bean")
     Vehicle vehicle3(){
         var veh = new Vehicle();
         veh.setName("Ferrari");
