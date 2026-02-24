@@ -1,4 +1,4 @@
-package com.eazybytes.ext.beans;
+package com.eazybytes.ext1.beans;
 
 public class Vehicle {
     private String name;

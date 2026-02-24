@@ -1,7 +1,7 @@
-package com.eazybytes.ext;
+package com.eazybytes.ext1;
 
-import com.eazybytes.ext.beans.Vehicle;
-import com.eazybytes.ext.config.ProjectConfig;
+import com.eazybytes.ext1.beans.Vehicle;
+import com.eazybytes.ext1.config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class DemoMainClass {

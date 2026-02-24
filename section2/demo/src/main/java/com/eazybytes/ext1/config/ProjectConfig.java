@@ -1,6 +1,6 @@
-package com.eazybytes.ext.config;
+package com.eazybytes.ext1.config;
 
-import com.eazybytes.ext.beans.Vehicle;
+import com.eazybytes.ext1.beans.Vehicle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
