@@ -9,7 +9,6 @@ public class Example7 {
         var context = new AnnotationConfigApplicationContext(ProjectScopeConfig.class);
         var myservice1 = context.getBean(MyService.class);
         var myservice2 = context.getBean(MyService.class);
-
         System.out.println(myservice1.hashCode());
         System.out.println(myservice2.hashCode());
     }
