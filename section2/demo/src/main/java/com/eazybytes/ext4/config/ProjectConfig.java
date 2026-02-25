@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
+@ComponentScan(basePackages = "com.eazybytes.ext4.beans")
 public class ProjectConfig {
 
     @Bean
