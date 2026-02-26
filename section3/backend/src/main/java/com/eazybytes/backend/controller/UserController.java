@@ -3,6 +3,7 @@ package com.eazybytes.backend.controller;
 import com.eazybytes.backend.dto.UserDto;
 import org.apache.catalina.User;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.RequestEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -65,6 +66,16 @@ public class UserController {
 
     @PostMapping
     public String createUser(@RequestBody UserDto userDto) {
+        return "Created User with the data: "+userDto.toString();
+    }
+
+    //Not recommended because of complexity
+    @PostMapping("request-entity")
+    public String createUserWithRequestEntity(RequestEntity<UserDto> requestEntity) {
+        HttpHeaders HttpHeaders = requestEntity.getHeaders();
+        UserDto userDto = requestEntity.getBody();
+        String queryParam = requestEntity.getUrl().getQuery();
+        String pathVariables = requestEntity.getUrl().getPath();
         return "Created User with the data: "+userDto.toString();
     }
 }
