@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e89da327-8d3b-428d-b73f-85ce7433cad0" name="Changes" comment="Saving H2">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eazybites/jobportal/JobportalApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eazybites/jobportal/company/controller/CompanyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eazybites/jobportal/config/web/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/jobportal-data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/jobportal-schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/eazybites/jobportal/JobportalApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "alexandrel5"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/alexandrel5/master_spring_j25.git",
+    "accountId": "ae0c72a9-be37-4c5c-b579-1b96620e12ee"
+  }
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="3ADQvFafLbrs8Q5hc0alpNqqD3l" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.JobportalApplication.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/alexandre/Documents/Development/master_spring_j25/jobportal",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "debugger.hotswap",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="JobportalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="jobportal" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.eazybites.jobportal.JobportalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e89da327-8d3b-428d-b73f-85ce7433cad0" name="Changes" comment="" />
+      <created>1772124889461</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772124889461</updated>
+      <workItem from="1772124890673" duration="6795000" />
+    </task>
+    <task id="LOCAL-00001" summary="New job portal and Package Structure Patterns in Action">
+      <option name="closed" value="true" />
+      <created>1772126316180</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772126316180</updated>
+    </task>
+    <task id="LOCAL-00002" summary="CONSOLE_LOG_PATTERN in application.properties">
+      <option name="closed" value="true" />
+      <created>1772126952327</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772126952327</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Pre-Loading Data into H2 with schema and data sql files">
+      <option name="closed" value="true" />
+      <created>1772129600190</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1772129600190</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Saving H2 Data to Disk, file jobportal - No more Losing Data">
+      <option name="closed" value="true" />
+      <created>1772130095511</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772130095511</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Saving H2">
+      <option name="closed" value="true" />
+      <created>1772130138662</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772130138662</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="New job portal and Package Structure Patterns in Action" />
+    <MESSAGE value="CONSOLE_LOG_PATTERN in application.properties" />
+    <MESSAGE value="Pre-Loading Data into H2 with schema and data sql files" />
+    <MESSAGE value="Saving H2 Data to Disk, file jobportal - No more Losing Data" />
+    <MESSAGE value="Saving H2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saving H2" />
+  </component>
+</project>
