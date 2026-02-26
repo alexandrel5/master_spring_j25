@@ -1,5 +1,6 @@
 package com.eazybytes.backend.controller;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -41,5 +42,22 @@ public class UserController {
     @GetMapping("/search/map")
     public String searchUserWithQueryParams(@RequestParam Map<String, String> requestParams) {
         return "Fetched user with query params: "+requestParams.get("name")+" and gender "+requestParams.get("gender");
+    }
+
+    @GetMapping("/headers")
+    public String readRequestHeaders(@RequestHeader("User-Agent") String userAgent,
+                                     @RequestHeader(name = "User-Location", required = false, defaultValue = "Hyderabad"
+                                     ) String userLocation) {
+        return "Received: "+userAgent+" "+userLocation;
+    }
+
+    @GetMapping("/headers/map")
+    public String readRequestHeaders(@RequestHeader Map<String, String> requestHeaders) {
+        return "Received: "+requestHeaders.get("User-Agent")+" "+requestHeaders.get("User-Location");
+    }
+
+    @GetMapping("/headers/http-headers")
+    public String readRequestHeadersWithHttpHeaders(@RequestHeader HttpHeaders httpHeaders) {
+        return "Received: "+httpHeaders.get("User-Agent")+" "+httpHeaders.get("User-Location");
     }
 }
