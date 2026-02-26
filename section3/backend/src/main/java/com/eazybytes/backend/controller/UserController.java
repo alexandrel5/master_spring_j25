@@ -3,7 +3,9 @@ package com.eazybytes.backend.controller;
 import com.eazybytes.backend.dto.UserDto;
 import org.apache.catalina.User;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -13,15 +15,16 @@ import java.util.Map;
 public class UserController {
 
     @GetMapping({"/{userId}/posts/{postId}", "/api/dummy/users/{userId}"})
-    public String searchUserPostWithMultiPathVariables(@PathVariable Long userId,
-                                                       @PathVariable(required = false) Long postId) {
+    public ResponseEntity<String> searchUserPostWithMultiPathVariables(@PathVariable Long userId,
+                                                                       @PathVariable(required = false) Long postId) {
         String response;
         if(postId == null) {
             response = "Fetched user with id "+userId;
         } else {
             response = "Fetched user with id " + userId + " and post id " + postId;
         }
-        return response;
+        //return response;
+        return ResponseEntity.ok().body(response);
     }
 
     @GetMapping({"/{userId}/orders/{orderId}"})
@@ -71,11 +74,14 @@ public class UserController {
 
     //Not recommended because of complexity
     @PostMapping("request-entity")
-    public String createUserWithRequestEntity(RequestEntity<UserDto> requestEntity) {
+    public ResponseEntity<String> createUserWithRequestEntity(RequestEntity<UserDto> requestEntity) {
         HttpHeaders HttpHeaders = requestEntity.getHeaders();
         UserDto userDto = requestEntity.getBody();
         String queryParam = requestEntity.getUrl().getQuery();
         String pathVariables = requestEntity.getUrl().getPath();
-        return "Created User with the data: "+userDto.toString();
+        //return "Created User with the data: "+userDto.toString();
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("Custom-Header", "ExampleValue")
+                .body("Created User with the data"+ userDto.toString());
     }
 }
