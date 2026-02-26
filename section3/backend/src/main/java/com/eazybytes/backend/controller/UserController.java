@@ -1,5 +1,7 @@
 package com.eazybytes.backend.controller;
 
+import com.eazybytes.backend.dto.UserDto;
+import org.apache.catalina.User;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,5 +61,10 @@ public class UserController {
     @GetMapping("/headers/http-headers")
     public String readRequestHeadersWithHttpHeaders(@RequestHeader HttpHeaders httpHeaders) {
         return "Received: "+httpHeaders.get("User-Agent")+" "+httpHeaders.get("User-Location");
+    }
+
+    @PostMapping
+    public String createUser(@RequestBody UserDto userDto) {
+        return "Created User with the data: "+userDto.toString();
     }
 }
