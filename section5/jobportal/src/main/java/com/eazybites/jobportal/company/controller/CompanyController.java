@@ -1,5 +1,6 @@
 package com.eazybites.jobportal.company.controller;
 
+import com.eazybites.jobportal.dto.CompanyDto;
 import com.eazybites.jobportal.entity.Company;
 import com.eazybites.jobportal.service.ICompanyService;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +25,9 @@ public class CompanyController {
 //    }
 
     @GetMapping(version = "1.0")
-    public ResponseEntity<List<Company>> getAllCompanies(){
+    public ResponseEntity<List<CompanyDto>> getAllCompanies(){
 
-        List<Company> companiesList = companyService.getALlCompany();
+        List<CompanyDto> companiesList = companyService.getALlCompany();
         return ResponseEntity.ok().body(companiesList);
     }
 }
