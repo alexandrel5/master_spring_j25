@@ -1,0 +1,9 @@
+package com.eazybites.jobportal.service;
+
+import com.eazybites.jobportal.entity.Company;
+
+import java.util.List;
+
+public interface ICompanyService {
+    List<Company> getALlCompany();
+}
