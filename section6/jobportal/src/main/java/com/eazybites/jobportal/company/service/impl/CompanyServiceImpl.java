@@ -1,9 +1,9 @@
-package com.eazybites.jobportal.service.impl;
+package com.eazybites.jobportal.company.service.impl;
 
 import com.eazybites.jobportal.dto.CompanyDto;
 import com.eazybites.jobportal.entity.Company;
 import com.eazybites.jobportal.repository.CompanyRepository;
-import com.eazybites.jobportal.service.ICompanyService;
+import com.eazybites.jobportal.company.service.ICompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

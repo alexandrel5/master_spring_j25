@@ -1,10 +1,8 @@
 package com.eazybites.jobportal.company.controller;
 
 import com.eazybites.jobportal.dto.CompanyDto;
-import com.eazybites.jobportal.entity.Company;
-import com.eazybites.jobportal.service.ICompanyService;
+import com.eazybites.jobportal.company.service.ICompanyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
