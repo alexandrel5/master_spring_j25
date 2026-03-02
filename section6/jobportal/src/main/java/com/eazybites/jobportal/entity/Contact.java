@@ -7,12 +7,10 @@ import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 
-import java.time.Instant;
-
-@Entity
-@Table(name = "CONTACTS")
 @Getter
 @Setter
+@Entity
+@Table(name = "contacts")
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,5 +48,6 @@ public class Contact {
 
     @Column(name = "user_type", nullable = false, length = 50)
     private String userType;
+
 
 }
