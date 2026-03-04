@@ -19,7 +19,8 @@ public class JobPortalSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) {
         return http.authorizeHttpRequests((requests) -> requests.anyRequest()
                         .authenticated())
-                        .formLogin(withDefaults()).httpBasic(withDefaults())
+                        .formLogin(flc -> flc.disable())//to disable form login use flc -> flc.disable()
+                        .httpBasic(withDefaults())//To disable httpBasic use hbc -> hbc.disable()
                         .build();
 
     }
