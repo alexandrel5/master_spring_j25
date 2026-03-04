@@ -17,8 +17,9 @@ public class JobPortalSecurityConfig {
     @Bean
     @Order(SecurityFilterProperties.BASIC_AUTH_ORDER)
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) {
-        return http.authorizeHttpRequests((requests) -> requests.anyRequest()
-                        .authenticated())
+        return http.csrf(csrfConfig -> csrfConfig.disable())
+                .authorizeHttpRequests((requests) -> requests.anyRequest()
+                        .permitAll())
                         .formLogin(flc -> flc.disable())//to disable form login use flc -> flc.disable()
                         .httpBasic(withDefaults())//To disable httpBasic use hbc -> hbc.disable()
                         .build();
