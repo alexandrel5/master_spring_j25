@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -71,10 +74,15 @@ public class JobPortalSecurityConfig {
 //        System.out.println("password2: " + password2);
 
         var user1 = User.builder().username("alexandre").password("$2a$10$mSqowWwT288Nr/KPHuNV8eI9Ssk.YsMp7uOAqnhx0e.tlbYD3gb0u").roles("USER").build();
-
         var user2 = User.builder().username("admin").password("$2a$10$o9uBdrXB91vGyjqqrux/wec5HOEyt5nD4GRhKgGKEtOMNzu6clNAG").roles("ADMIN").build();
-
         return new InMemoryUserDetailsManager(user1, user2);
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManagerBean(){
+        var authenticationProvider = new DaoAuthenticationProvider(userDetailsService());
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        return new ProviderManager(authenticationProvider);
     }
 
     @Bean
