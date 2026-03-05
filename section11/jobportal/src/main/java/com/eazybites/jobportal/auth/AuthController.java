@@ -3,6 +3,7 @@ package com.eazybites.jobportal.auth;
 import com.eazybites.jobportal.dto.LoginRequestDto;
 import com.eazybites.jobportal.dto.LoginResponseDto;
 import com.eazybites.jobportal.dto.UserDto;
+import com.eazybites.jobportal.security.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
+    private final JwtUtil jwtUtil;
 
     @PostMapping(value = "/login/public", version = "1.0")
     public ResponseEntity<LoginResponseDto> apiLogin(@RequestBody LoginRequestDto loginRequestDto) {
@@ -26,9 +28,12 @@ public class AuthController {
             var resultAuthentication = authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(
                     loginRequestDto.username(),
                     loginRequestDto.password()));
+
+            //Generate JWT token
+            String jwtToken = jwtUtil.generateJwtToken(resultAuthentication);
             var userDto = new UserDto();
             return ResponseEntity.status(HttpStatus.OK)
-                    .body(new LoginResponseDto(HttpStatus.OK.getReasonPhrase(), userDto, null));
+                    .body(new LoginResponseDto(HttpStatus.OK.getReasonPhrase(), userDto, jwtToken));
         } catch (BadCredentialsException ex) {
             return buildErrorResponse(HttpStatus.UNAUTHORIZED,
                     "Invalid username or password");
