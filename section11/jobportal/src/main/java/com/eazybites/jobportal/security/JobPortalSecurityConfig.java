@@ -2,18 +2,16 @@ package com.eazybites.jobportal.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.security.autoconfigure.web.servlet.SecurityFilterProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -66,8 +64,17 @@ public class JobPortalSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        User.builder().username("alexandre").password(new BCryptPasswordEncoder()
-                .encode("password")).roles("USER").build();
+
+//        var password = passwordEncoder().encode("Alexandre@123");//$2a$10$mSqowWwT288Nr/KPHuNV8eI9Ssk.YsMp7uOAqnhx0e.tlbYD3gb0u
+//        System.out.println("password: " + password);
+//        var password2 = passwordEncoder().encode("Admin@123");//$2a$10$o9uBdrXB91vGyjqqrux/wec5HOEyt5nD4GRhKgGKEtOMNzu6clNAG
+//        System.out.println("password2: " + password2);
+
+        var user1 = User.builder().username("alexandre").password("$2a$10$mSqowWwT288Nr/KPHuNV8eI9Ssk.YsMp7uOAqnhx0e.tlbYD3gb0u").roles("USER").build();
+
+        var user2 = User.builder().username("admin").password("$2a$10$o9uBdrXB91vGyjqqrux/wec5HOEyt5nD4GRhKgGKEtOMNzu6clNAG").roles("ADMIN").build();
+
+        return new InMemoryUserDetailsManager(user1, user2);
     }
 
     @Bean
