@@ -27,8 +27,8 @@ const httpClient = axios.create({
  * These endpoints will not include the Authorization header
  */
 const PUBLIC_ENDPOINTS = [
-  "/auth/login",
-  "/auth/register",
+  "/auth/login/public",
+  "/auth/register/public",
   "/companies/public",
   "/contacts/public",
 ];
@@ -76,7 +76,7 @@ httpClient.interceptors.request.use(
       // If CSRF token is not present in cookies, fetch it from the server
       if (!csrfToken) {
         try {
-          await axios.get(`${API_BASE_URL}/csrf-token`, {
+          await axios.get(`${API_BASE_URL}/csrf-token/public`, {
             withCredentials: true,
           });
           csrfToken = Cookies.get("XSRF-TOKEN");
@@ -147,7 +147,7 @@ httpClient.interceptors.response.use(
         case 401:
           // Only redirect to login if this is NOT a login request
           // and we're NOT already on the login page
-          const isLoginRequest = error.config.url.includes("/auth/login");
+          const isLoginRequest = error.config.url.includes("/auth/login/public");
           const isOnLoginPage = window.location.pathname === "/login";
 
           if (!isLoginRequest && !isOnLoginPage) {
