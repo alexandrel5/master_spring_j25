@@ -69,8 +69,23 @@ public class JobPortalSecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(){
-        return new ProviderManager();
+    public UserDetailsService userDetailsService() {
+
+//        var password = passwordEncoder().encode("Alexandre@123");//$2a$10$mSqowWwT288Nr/KPHuNV8eI9Ssk.YsMp7uOAqnhx0e.tlbYD3gb0u
+//        System.out.println("password: " + password);
+//        var password2 = passwordEncoder().encode("Admin@123");//$2a$10$o9uBdrXB91vGyjqqrux/wec5HOEyt5nD4GRhKgGKEtOMNzu6clNAG
+//        System.out.println("password2: " + password2);
+
+        var user1 = User.builder().username("alexandre").password("$2a$10$mSqowWwT288Nr/KPHuNV8eI9Ssk.YsMp7uOAqnhx0e.tlbYD3gb0u").roles("USER").build();
+        var user2 = User.builder().username("admin").password("$2a$10$o9uBdrXB91vGyjqqrux/wec5HOEyt5nD4GRhKgGKEtOMNzu6clNAG").roles("ADMIN").build();
+        return new InMemoryUserDetailsManager(user1, user2);
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManagerBean(){
+        var authenticationProvider = new DaoAuthenticationProvider(userDetailsService());
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        return new ProviderManager(authenticationProvider);
     }
 
     @Bean
