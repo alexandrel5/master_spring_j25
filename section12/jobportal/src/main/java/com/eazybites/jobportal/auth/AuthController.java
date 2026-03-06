@@ -41,15 +41,16 @@ public class AuthController {
 
     @PostMapping(value = "/login/public", version = "1.0")
     public ResponseEntity<LoginResponseDto> apiLogin(@RequestBody LoginRequestDto loginRequestDto) {
-
         try {
-            var resultAuthentication = authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(
-                    loginRequestDto.username(),
+            var resultAuthentication = authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(loginRequestDto.username(),
                     loginRequestDto.password()));
-
             //Generate JWT token
             String jwtToken = jwtUtil.generateJwtToken(resultAuthentication);
             var userDto = new UserDto();
+            var loggedInUser = (JobPortalUser) resultAuthentication.getPrincipal();
+            BeanUtils.copyProperties(loggedInUser, userDto);
+            userDto.setRole(loggedInUser.getRole().getName());
+            userDto.setUserId(loggedInUser.getId());
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new LoginResponseDto(HttpStatus.OK.getReasonPhrase(), userDto, jwtToken));
         } catch (BadCredentialsException ex) {
