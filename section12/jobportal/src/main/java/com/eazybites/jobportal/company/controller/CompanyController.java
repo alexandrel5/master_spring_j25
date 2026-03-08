@@ -25,7 +25,7 @@ public class CompanyController {
     @GetMapping(path = "/public", version = "1.0")
     public ResponseEntity<List<CompanyDto>> getAllCompanies(){
 
-        List<CompanyDto> companiesList = companyService.getALlCompany();
+        List<CompanyDto> companiesList = companyService.getAllCompany();
         return ResponseEntity.ok().body(companiesList);
     }
 }

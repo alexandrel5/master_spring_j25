@@ -6,5 +6,5 @@ import com.eazybites.jobportal.entity.Company;
 import java.util.List;
 
 public interface ICompanyService {
-    List<CompanyDto> getALlCompany();
+    List<CompanyDto> getAllCompany();
 }
