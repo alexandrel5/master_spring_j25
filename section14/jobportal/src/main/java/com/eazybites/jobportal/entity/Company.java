@@ -3,6 +3,7 @@ package com.eazybites.jobportal.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -50,7 +51,13 @@ public class Company extends BaseEntity {
     @Column(name = "WEBSITE", length = 500)
     private String website;
 
+    /*
+    For @ManyToOne/@OneToOne -> Hibernate always uses a JOIN in the main query.
+    For @OneToMany -> Hibernate's default strategy is not to JOIN by default.
+    Instead, it often uses a secondary select(one query per collection) unless configured otherwise.
+     */
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    @BatchSize(size = 10)
     private List<Job> jobs = new ArrayList<>();
 
 }
