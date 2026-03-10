@@ -16,7 +16,9 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     List<Company> findAllWithJobsByStatus(@Param("status") String status);
 
     //Native SQL Queries = pure sql
-    @Query(value = "SELECT DISTINCT c.* FROM companies c JOIN jobs j ON c.id = j.company_id WHERE j.status = ?1",
+    @Query(value = "SELECT DISTINCT c.* FROM companies c JOIN jobs j ON c.id = j.company_id WHERE j.status = ?",
     nativeQuery = true)
     List<Company> findAllWithJobsByStatusNative(@Param("status") String status);
+
+    List<Company> fetchCompaniesWithJobsByStatus(@Param("status") String status);
 }
