@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -58,6 +59,7 @@ public class Company extends BaseEntity {
      */
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     @BatchSize(size = 10)
+    //@SQLRestriction("status = 'ACTIVE'")
     private List<Job> jobs = new ArrayList<>();
 
 }
