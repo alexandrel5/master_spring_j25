@@ -1,6 +1,7 @@
 package com.eazybites.jobportal.security;
 
 import com.eazybites.jobportal.security.filter.JwtTokenValidatorFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -61,8 +62,21 @@ public class JobPortalSecurityConfig {
                 })
                 .addFilterBefore(new JwtTokenValidatorFilter(publicPaths), BasicAuthenticationFilter.class)
                         .formLogin(flc -> flc.disable())//to disable form login use flc -> flc.disable()
-                        //.httpBasic(withDefaults())//To disable httpBasic use hbc -> hbc.disable()
-                        .build();
+                        .httpBasic(hbc -> hbc.disable())//To disable httpBasic use hbc -> hbc.disable()
+                .exceptionHandling(exception -> exception
+                                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                                    response.setContentType("application/json");
+                                    response.getWriter().write("{\"error\": \"Access Denied\", \"message\": \"You don't have permission to access this resource\"}");
+                                })
+//                        .authenticationEntryPoint((request, response, authException) -> {
+//                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//                            response.setContentType("application/json");
+//                            response.getWriter().write("{\"error\": \"Unauthorized\", \"message\": \"Authentication required\"}");
+//                        })
+
+                )
+                .build();
 
     }
 
