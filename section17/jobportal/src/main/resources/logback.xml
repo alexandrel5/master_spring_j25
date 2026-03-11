@@ -47,7 +47,7 @@
     <!-- Root Logger -->
     <!-- ===================== -->
     <root level="INFO">
-        <appender-ref ref="RollingFile"/>
+<!--        <appender-ref ref="RollingFile"/>-->
         <appender-ref ref="Console"/>
     </root>
 
@@ -57,7 +57,7 @@
     <logger name="com.eazybytes.jobportal"
             level="INFO"
             additivity="false">
-        <appender-ref ref="RollingFile"/>
+<!--        <appender-ref ref="RollingFile"/>-->
         <appender-ref ref="Console"/>
     </logger>
 
