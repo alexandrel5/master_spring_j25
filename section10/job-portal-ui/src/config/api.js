@@ -41,18 +41,18 @@ export const API_ENDPOINTS = {
   // Contact endpoints
   CONTACTS: "/contacts/public",
   CONTACT_BY_ID: (id) => `/contacts/${id}`,
-  ADMIN_CONTACTS: "/admin/contacts",
-  ADMIN_CONTACTS_SORT: "/admin/contacts/sort",
-  ADMIN_CONTACTS_PAGE: "/admin/contacts/page",
-  UPDATE_CONTACT_STATUS: (id) => `/admin/contacts/${id}/status`,
+  ADMIN_CONTACTS: "/contacts/admin",
+  ADMIN_CONTACTS_SORT: "/contacts/sort/admin",
+  ADMIN_CONTACTS_PAGE: "/contacts/page/admin",
+  UPDATE_CONTACT_STATUS: (id) => `/contacts/${id}/status/admin`,
 
   // CSRF token endpoint
   CSRF_TOKEN: "/csrf-token/public",
 
   // Admin User Management endpoints
-  SEARCH_USER_BY_EMAIL: "/admin/users/search",
-  ELEVATE_TO_EMPLOYER: (userId) => `/admin/users/${userId}/elevate-to-employer`,
-  ASSIGN_COMPANY_TO_EMPLOYER: (userId) => `/admin/users/${userId}/assign-company`,
+  SEARCH_USER_BY_EMAIL: "/users/search/admin",
+  ELEVATE_TO_EMPLOYER: (userId) => `/users/${userId}/elevate-to-employer/admin`,
+  ASSIGN_COMPANY_TO_EMPLOYER: (userId) => `/users/${userId}/assign-company/admin`,
 
   // Employer Job Management endpoints
   EMPLOYER_JOBS: "/employer/jobs",
