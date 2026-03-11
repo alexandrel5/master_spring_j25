@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -48,5 +49,16 @@ public class ContactController {
         List<ContactResponseDto> contactResponseDtos = contactService
                 .fetchNewContactMsgsWithSort(sortBy, sortDir);
         return ResponseEntity.status(HttpStatus.OK).body(contactResponseDtos);
+    }
+    @GetMapping("/page/admin")
+    public ResponseEntity<Page<ContactResponseDto>> fetchNewContactMsgsWithPaginationAndSort(
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "10") int pageSize,
+            @RequestParam(defaultValue = "createdAt") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir
+    ){
+        Page<ContactResponseDto> contactResponseDtosPage = contactService
+                .fetchNewContactMsgsWithPaginationAndSort(pageNumber, pageSize, sortBy, sortDir);
+        return ResponseEntity.status(HttpStatus.OK).body(contactResponseDtosPage);
     }
 }
