@@ -6,6 +6,7 @@ import com.eazybites.jobportal.dto.ContactRequestDto;
 import com.eazybites.jobportal.dto.ContactResponseDto;
 import com.eazybites.jobportal.entity.Contact;
 import com.eazybites.jobportal.repository.ContactRepository;
+import com.eazybites.jobportal.util.ApplicationUtility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -84,14 +85,8 @@ public class ContactServiceImpl implements IContactService {
     @Transactional
     @Override
     public boolean closeContactMsg(Long id, String status) {
-        Contact contact = contactRepository.findById(id).orElse(null);
-        if(contact == null){
-            return false;
-        }else  {
-            contact.setStatus(status);
-            contactRepository.save(contact);
-        }
-        return true;
+        int updatedRows = contactRepository.updateStatusById(status, id, ApplicationUtility.getLoggedInUser());
+        return updatedRows > 0;
     }
 
 
