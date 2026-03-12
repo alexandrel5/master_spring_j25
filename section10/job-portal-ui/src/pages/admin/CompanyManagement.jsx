@@ -54,7 +54,7 @@ const CompanyManagement = () => {
         setSuccess('Company updated successfully');
       } else {
         // Create new company
-        await httpClient.post(API_ENDPOINTS.COMPANIES, dataToSend);
+        await httpClient.post(API_ENDPOINTS.COMPANIES_ADMIN, dataToSend);
         setSuccess('Company created successfully');
       }
 
