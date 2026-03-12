@@ -40,7 +40,9 @@ public class PathsConfig {
                 "/api/contacts/admin",
                 "/api/contacts/sort/admin",
                 "/api/contacts/page/admin",
-                "/api/contacts/${id}/status/admin"
+                "/api/contacts/${id}/status/admin",
+                "/api/companies/{id}/admin",
+                "/api/companies/admin"
         );
     }
 }
