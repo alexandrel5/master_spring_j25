@@ -87,7 +87,9 @@ httpClient.interceptors.request.use(
         } catch (error) {
           // Ignore 404 errors (endpoint might not be available) and continue
           if (error.response && error.response.status === 404) {
-            console.warn("[CSRF Token] Endpoint not found (404), continuing without CSRF token");
+            console.warn(
+              "[CSRF Token] Endpoint not found (404), continuing without CSRF token"
+            );
           } else {
             console.error("[CSRF Token Error]", error);
             return Promise.reject(error);
@@ -98,12 +100,6 @@ httpClient.interceptors.request.use(
       // Add CSRF token to request header
       config.headers["X-XSRF-TOKEN"] = csrfToken;
     }
-
-    // Log the request for debugging (can be removed in production)
-    console.log(`[HTTP Request] ${config.method.toUpperCase()} ${config.url}`, {
-      headers: config.headers,
-      data: config.data,
-    });
 
     return config;
   },
@@ -119,17 +115,6 @@ httpClient.interceptors.request.use(
  */
 httpClient.interceptors.response.use(
   (response) => {
-    // Log the response for debugging (can be removed in production)
-    console.log(
-      `[HTTP Response] ${response.config.method.toUpperCase()} ${
-        response.config.url
-      }`,
-      {
-        status: response.status,
-        data: response.data,
-      }
-    );
-
     return response;
   },
   (error) => {
@@ -147,7 +132,7 @@ httpClient.interceptors.response.use(
         case 401:
           // Only redirect to login if this is NOT a login request
           // and we're NOT already on the login page
-          const isLoginRequest = error.config.url.includes("/auth/login/public");
+          const isLoginRequest = error.config.url.includes("/auth/login");
           const isOnLoginPage = window.location.pathname === "/login";
 
           if (!isLoginRequest && !isOnLoginPage) {
