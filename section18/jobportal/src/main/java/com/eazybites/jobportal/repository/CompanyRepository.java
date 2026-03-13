@@ -1,9 +1,9 @@
 package com.eazybites.jobportal.repository;
 
 import com.eazybites.jobportal.entity.Company;
-import jakarta.persistence.Cacheable;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +20,7 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     @Query("SELECT DISTINCT c FROM Company c JOIN FETCH c.jobs j WHERE j.status = :status")
     List<Company> findAllWithJobsByStatus(@Param("status") String status);
 
+    @Cacheable("jobs")
     List<Company> fetchCompaniesWithJobsByStatus(@Param("status") String status);
 
     //Native SQL Queries = pure sql
