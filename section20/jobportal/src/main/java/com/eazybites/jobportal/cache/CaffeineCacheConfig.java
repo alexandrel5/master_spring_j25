@@ -45,7 +45,7 @@ public class CaffeineCacheConfig {
                         .expireAfterWrite(companiesCacheTtlMinutes, TimeUnit.MINUTES)
                         .maximumSize(companiesCacheMaxSize)
                         .build());
-        CaffeineCache rolesCache = new CaffeineCache("role",
+        CaffeineCache rolesCache = new CaffeineCache("roles",
                 Caffeine.newBuilder()
                         .expireAfterWrite(rolesCacheTtlDays, TimeUnit.DAYS)
                         .maximumSize(rolesCacheMaxSize)
