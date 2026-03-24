@@ -5,7 +5,6 @@ import com.eazybites.jobportal.repository.JobPortalUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Profile;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,13 +15,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Profile("prod")
+@Profile("!prod")
 @Component
 @RequiredArgsConstructor
-public class JobPortalUsernamePwdAuthenticationProvider implements AuthenticationProvider {
+public class JobPortalNonProdUsernamePwdAuthenticationProvider implements AuthenticationProvider {
 
     private final JobPortalUserRepository jobPortalUserRepository;
     private final PasswordEncoder passwordEncoder;
@@ -36,11 +34,7 @@ public class JobPortalUsernamePwdAuthenticationProvider implements Authenticatio
 
         List<SimpleGrantedAuthority> authorities = List.of(
                 new SimpleGrantedAuthority(jobPortalUser.getRole().getName()));
-        if(passwordEncoder.matches(pwd, jobPortalUser.getPasswordHash())){
             return new UsernamePasswordAuthenticationToken(jobPortalUser, null, authorities);
-        } else {
-            throw new BadCredentialsException("Invalid password");
-        }
     }
 
     @Override
