@@ -8,4 +8,4 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: jobportal
     volumes:
-      - /Users/alexandre/Desktop/jobportal-data:/var/lib/mysql
+      - /home/alexandre/Área de Trabalho/jobportal-data:/var/lib/mysql
